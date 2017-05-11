@@ -15,7 +15,7 @@
     btnClick.detachEvent('onclick', handler);//删除事件
 </script>
 ```
-###** 两者的区别 **
+** 两者的区别 **
 
 1.参数个数不相同，这个最直观，addEventListener有三个参数，attachEvent只有两个，attachEvent添加的事件处理程序只能发生在冒泡阶段，addEventListener第三个参数可以决定添加的事件处理程序是在捕获阶段还是冒泡阶段处理（我们一般为了浏览器兼容性都设置为冒泡阶段）
 
@@ -25,8 +25,8 @@
 
 4.为一个事件添加多个事件处理程序时，执行顺序不同，addEventListener添加会按照添加顺序执行，而attachEvent添加多个事件处理程序时顺序无规律(添加的方法少的时候大多是按添加顺序的反顺序执行的，但是添加的多了就无规律了)，所以添加多个的时候，不依赖执行顺序的还好，若是依赖于函数执行顺序，最好自己处理，不要指望浏览器
 
-  //根据上述几点写出的兼容写法
-   ```
+//根据上述几点写出的兼容写法
+```
         function addEvent(node, type, handler) {
             if (!node) return false;
             if (node.addEventListener) {
@@ -39,15 +39,15 @@
             }
             return false;
         }
-	```
+```
 	
 	
 ###上面讲到了this指向不同，下面就解决一下this的问题
 
 ###添加事件处理程序
 
-```
-   function addEvent(node, type, handler) {
+
+   > function addEvent(node, type, handler) {
         if (!node) return false;
         if (node.addEventListener) {
             node.addEventListener(type, handler, false);
@@ -64,10 +64,9 @@
         return false;
     }
 //取消事件处理程序
-```
 
-```
-function removeEvent(node, type, handler) {
+
+> function removeEvent(node, type, handler) {
     if (!node) return false;
     if (node.removeEventListener) {
         node.removeEventListener(type, handler, false);
@@ -79,7 +78,7 @@ function removeEvent(node, type, handler) {
     return false;
 }
   //上述步骤的属性k之所以要用'e' + type + handler，就是为了再取消事件处理程序时找到对应的属性，简而言之，就是一个标识
-```
+
 
 
 ###事件对象的不同属性方法
@@ -88,20 +87,20 @@ function removeEvent(node, type, handler) {
 
 
 
-```
->function getEvent(e) {
+
+> function getEvent(e) {
     return e || window.event;
 } // 获取事件
 
 
 
->function getTarget(e) {
+> function getTarget(e) {
     return e.target || e.scrElement;
 } //获取事件的目标元素
 
 
 
-function preventDefault(e) {
+> function preventDefault(e) {
     if (e.preventDefault)
         e.preventDefault();
     else
@@ -110,10 +109,10 @@ function preventDefault(e) {
 
 
 
-function stopPropagation(e) {
+> function stopPropagation(e) {
     if (e.stopPropagation)
         e.stopPropagation();
     else
         e.cancelBubble = true;
 }  //阻止冒泡
-```
+
