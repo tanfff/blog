@@ -86,25 +86,6 @@ function removeEvent(node, type, handler) {
 
 ###DOM中的事件对象和IE中的事件对象有不同的属性/方法
 
-首先是DOM
-| 属性/方法	| 类型	| 读/写	| 方法|
-| bubbles	| Boolean	| 只读	| 事件是否冒泡|
-|cancelable	|Boolean	|只读	|事件是否冒泡|
-|currentTarget	|Element	|只读	|事件处理程序当前处理元素|
-|detail	|Integer	|只读	|与事件相关细节信息|
-|eventPhase	|Integer	|只读	|事件处理程序阶段：1 捕获阶段，2 处于目标阶段，3 冒泡阶段|
-|preventDefault()	|Function	|只读	|取消事件默认行为|
-|stopPropagation()	|Function	|只读	|取消事件进一步捕获或冒泡|
-|target	|Element	|只读	|事件的目标元素|
-|type	|String	|只读	|被触发的事件类型|
-|view	|AbstractView	|只读	|与事件关联的抽象视图，等同于发生事件的window对象|
-然后是IE
-|属性/方法	|类型	|读/写	|方法|
-|cancelBubble	|Boolean	|读/写	|默认为false，设置为true后可以取消事件冒泡|
-|returnValue	|Boolean	|读/写	|默认为true，设为false可以取消事件默认行为|
-|srcElement	|Element	|只读	|事件的目标元素|
-|type	|String	|只读	|被触发的事件类型|
-虽然DOM和IE的event对象不同，但基于它们的相似性，我们还是可以写出跨浏览器的事件对象方案，可以不用担心浏览器的问题会影响我们功能的实现
 
 
 ```
