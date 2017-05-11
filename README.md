@@ -46,8 +46,8 @@
 
 ###添加事件处理程序
 
-
-   > function addEvent(node, type, handler) {
+```
+function addEvent(node, type, handler) {
         if (!node) return false;
         if (node.addEventListener) {
             node.addEventListener(type, handler, false);
@@ -64,9 +64,10 @@
         return false;
     }
 //取消事件处理程序
+```
 
-
-> function removeEvent(node, type, handler) {
+```
+function removeEvent(node, type, handler) {
     if (!node) return false;
     if (node.removeEventListener) {
         node.removeEventListener(type, handler, false);
@@ -78,7 +79,7 @@
     return false;
 }
   //上述步骤的属性k之所以要用'e' + type + handler，就是为了再取消事件处理程序时找到对应的属性，简而言之，就是一个标识
-
+```
 
 
 ###事件对象的不同属性方法
@@ -87,32 +88,32 @@
 
 
 
-
-> function getEvent(e) {
+```
+function getEvent(e) {
     return e || window.event;
 } // 获取事件
+```
 
-
-
-> function getTarget(e) {
+```
+function getTarget(e) {
     return e.target || e.scrElement;
 } //获取事件的目标元素
+```
 
-
-
+```
 > function preventDefault(e) {
     if (e.preventDefault)
         e.preventDefault();
     else
         e.returnValue = false;
 }  //取消默认事件
+```
 
-
-
-> function stopPropagation(e) {
+```
+function stopPropagation(e) {
     if (e.stopPropagation)
         e.stopPropagation();
     else
         e.cancelBubble = true;
 }  //阻止冒泡
-
+```
